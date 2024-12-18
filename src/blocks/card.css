@@ -58,13 +58,12 @@
   background-color: beige;
   width: 100%;
   height: 100%;
-  animation: open 3s linear 0s alternate infinite forwards;
-  opacity: 0.5;
+  animation: open 3s linear 0s paused forwards;
   border-radius: 0 2% 2% 0;
 }
 
 .card__back {
-  background-color: brown;
+  background-color: beige;
   width: 100%;
   height: 100%;
   box-shadow: 12px 12px 25px;

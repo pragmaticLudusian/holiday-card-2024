@@ -1,44 +1,53 @@
+:root {
+  --cardheight: 0;
+}
+
 @keyframes open {
   0% {
-    transform: perspective(640px) translateX(0) rotateY(0deg) scaleY(1);
+    transform: perspective(var(--cardheight)) translateX(0) rotateY(0deg)
+      scaleY(1);
   }
-  10% {
-    transform: perspective(640px) translateX(-7%) rotateY(-18deg) scaleY(1.1);
+  11% {
+    transform: perspective(var(--cardheight)) translateX(-7%) rotateY(-18deg)
+      scaleY(1.1);
   }
-  20% {
-    transform: perspective(640px) translateX(-18%) rotateY(-36deg) scaleY(1.16);
+  22% {
+    transform: perspective(var(--cardheight)) translateX(-18%) rotateY(-36deg)
+      scaleY(1.16);
   }
-  30% {
-    transform: perspective(640px) translateX(-32%) rotateY(-54deg) scaleY(1.22);
+  33% {
+    transform: perspective(var(--cardheight)) translateX(-32%) rotateY(-54deg)
+      scaleY(1.22);
   }
-  40% {
-    transform: perspective(640px) translateX(-48%) rotateY(-72deg) scaleY(1.27);
+  44% {
+    transform: perspective(var(--cardheight)) translateX(-48%) rotateY(-72deg)
+      scaleY(1.27);
   }
-  50% {
-    transform: perspective(640px) translateX(-64%) rotateY(-90deg) scaleY(1.28);
+  56% {
+    transform: perspective(var(--cardheight)) translateX(-64%) rotateY(-90deg)
+      scaleY(1.28);
   }
-  60% {
-    transform: perspective(640px) translateX(-79%) rotateY(-108deg) scaleY(1.27);
+  67% {
+    transform: perspective(var(--cardheight)) translateX(-79%) rotateY(-108deg)
+      scaleY(1.27);
   }
-  70% {
-    transform: perspective(640px) translateX(-91%) rotateY(-126deg) scaleY(1.23);
+  78% {
+    transform: perspective(var(--cardheight)) translateX(-91%) rotateY(-126deg)
+      scaleY(1.23);
   }
-  80% {
-    transform: perspective(640px) translateX(-99%) rotateY(-144deg) scaleY(1.16);
-  }
-  90% {
-    transform: perspective(640px) translateX(-102%) rotateY(-162deg)
-      scaleY(1.09);
+  89% {
+    transform: perspective(var(--cardheight)) translateX(-99%) rotateY(-144deg)
+      scaleY(1.16);
   }
   100% {
-    transform: perspective(640px) translateX(-100%) rotateY(-180deg) scaleY(1);
+    transform: perspective(var(--cardheight)) translateX(-102%) rotateY(-162deg)
+      scaleY(1.09);
   }
 }
 
 .card {
-  height: 640px;
+  height: 80%;
   aspect-ratio: 9 / 16;
-  border-radius: 4px;
   position: relative;
 }
 
@@ -49,8 +58,9 @@
   background-color: beige;
   width: 100%;
   height: 100%;
-  animation: open 1s linear 0s alternate infinite forwards;
+  animation: open 3s linear 0s alternate infinite forwards;
   opacity: 0.5;
+  border-radius: 0 2% 2% 0;
 }
 
 .card__back {
@@ -58,4 +68,5 @@
   width: 100%;
   height: 100%;
   box-shadow: 12px 12px 25px;
+  border-radius: 0 2% 2% 0;
 }

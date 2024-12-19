@@ -24,10 +24,12 @@ const cardCoverElements = cardElement.querySelectorAll(".card__cover");
 const cardElements = [cardElement, cardFrontElement].concat(
   Array.from(cardCoverElements)
 );
-console.log(cardElements);
 
 const cardTitleElement = cardElement.querySelector(".card__title");
-cardSizeRender();
+const cardHeaderElement = cardElement.querySelector(".card__header");
+const cardFooterElement = cardElement.querySelector(".card__footer");
+
+const videoElement = cardElement.querySelector(".card__video");
 
 cardFrontElement.addEventListener("click", () => {
   if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
@@ -47,12 +49,24 @@ function cardSizeRender() {
     "font-size",
     `${(cardElement.clientWidth * 84) / 360}px`
   );
+  cardHeaderElement.style.setProperty(
+    "font-size",
+    `${(cardElement.clientWidth * 36) / 360}px`
+  );
+  cardFooterElement.style.setProperty(
+    "font-size",
+    `${(cardElement.clientWidth * 36) / 360}px`
+  );
 }
+cardSizeRender();
 
 function cardOpen() {
   cardElement.classList.add("card_opened");
   const randomNum = Math.floor(Math.random() * 12);
-  console.log(`https://youtu.be/${songsArray[randomNum]}`);
+  videoElement.setAttribute(
+    "src",
+    `https://youtube.com/embed/${songsArray[randomNum]}`
+  );
   backgroundFadeAnimation("in");
   cardResetAnimation();
   cardSetAnimation("running");

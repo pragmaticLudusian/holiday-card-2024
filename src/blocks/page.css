@@ -2,6 +2,10 @@
   background: transparent;
 }
 
+* {
+  box-sizing: border-box; /* would cause bottom offset issues otherwise; normally it's not inheritable */
+}
+
 .page {
   position: relative;
   width: 100vw;

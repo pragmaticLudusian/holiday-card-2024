@@ -17,11 +17,14 @@ const cssRoot = document.querySelector(":root");
 const cssRootStyle = getComputedStyle(cssRoot);
 
 const pageElement = document.querySelector(".page");
+
 const cardElement = document.querySelector(".card");
 const cardFrontElement = cardElement.querySelector(".card__front");
 const cardCoverElement = cardElement.querySelector(".card__cover");
-cardSizeRender();
 const cardElements = [cardElement, cardFrontElement, cardCoverElement];
+
+const cardTitleElement = cardElement.querySelector(".card__title");
+cardSizeRender();
 
 cardFrontElement.addEventListener("click", () => {
   if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
@@ -36,6 +39,10 @@ function cardSizeRender() {
   cssRoot.style.setProperty(
     "--cardwidth",
     `${cardElement.clientWidth * 0.27}px`
+  );
+  cardTitleElement.style.setProperty(
+    "font-size",
+    `${(cardElement.clientWidth * 72) / (360 + 10)}px`
   );
 }
 

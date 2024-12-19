@@ -81,7 +81,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: beige;
+  background-color: blanchedalmond;
   width: 100%;
   height: 100%;
   animation: open 1s linear 0s paused forwards;
@@ -106,8 +106,8 @@
   font-size: 72px;
   color: red;
   text-shadow: 2px 2px maroon;
-  border-top: 4px solid deepskyblue;
-  border-bottom: 4px solid deepskyblue;
+  border-top: 4px solid blue;
+  border-bottom: 4px solid blue;
 }
 
 .coloralt {

@@ -16,6 +16,7 @@ const songsArray = [
 const cssRoot = document.querySelector(":root");
 const cssRootStyle = getComputedStyle(cssRoot);
 
+const pageElement = document.querySelector(".page");
 const cardElement = document.querySelector(".card");
 const cardFrontElement = cardElement.querySelector(".card__front");
 const cardCoverElement = cardElement.querySelector(".card__cover");
@@ -42,7 +43,7 @@ function cardOpen() {
   cardElement.classList.add("card_opened");
   const randomNum = Math.floor(Math.random() * 12);
   console.log(`https://youtu.be/${songsArray[randomNum]}`);
-
+  backgroundFadeAnimation("in");
   cardResetAnimation();
   cardSetAnimation("running");
   setTimeout(() => {
@@ -51,6 +52,7 @@ function cardOpen() {
 }
 
 function cardClose() {
+  backgroundFadeAnimation("out");
   cardResetAnimation(); // so that the reverse can work properly
   cardSetAnimation("running", "reverse");
   setTimeout(() => {
@@ -71,4 +73,16 @@ function cardResetAnimation() {
     elem.offsetHeight; // reflow
     elem.style.animation = null;
   });
+}
+
+function backgroundFadeAnimation(animation) {
+  // a pseudo element would need an alternate method of setting bg opacity
+  let opacity = animation === "in" ? 0 : 1;
+  const bgFadeAnimation = setInterval(() => {
+    animation === "in" ? (opacity += 0.016) : (opacity -= 0.02);
+    pageElement.style.setProperty("--bgopacity", `${opacity}`);
+    if (opacity > 1 || opacity < 0) {
+      clearInterval(bgFadeAnimation);
+    }
+  }, 20);
 }

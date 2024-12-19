@@ -17,10 +17,12 @@ const cssRoot = document.querySelector(":root");
 const cssRootStyle = getComputedStyle(cssRoot);
 
 const cardElement = document.querySelector(".card");
-const cardCoverElement = document.querySelector(".card__front");
+const cardFrontElement = cardElement.querySelector(".card__front");
+const cardCoverElement = cardElement.querySelector(".card__cover");
 cardSizeRender();
+const cardElements = [cardElement, cardFrontElement, cardCoverElement];
 
-cardCoverElement.addEventListener("click", () => {
+cardFrontElement.addEventListener("click", () => {
   if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
     // prevent animation interruption
     cardElement.classList.contains("card_opened") ? cardClose() : cardOpen();
@@ -32,7 +34,7 @@ function cardSizeRender() {
   cssRoot.style.setProperty("--cardheight", `${window.innerHeight * 0.8}px`);
   cssRoot.style.setProperty(
     "--cardwidth",
-    `${cardElement.clientWidth * 0.59}px`
+    `${cardElement.clientWidth * 0.27}px`
   );
 }
 
@@ -58,16 +60,15 @@ function cardClose() {
 }
 
 function cardSetAnimation(state, dir = "normal") {
-  cardElement.style.animationDirection = dir;
-  cardElement.style.animationPlayState = state;
-  cardCoverElement.style.animationDirection = dir;
-  cardCoverElement.style.animationPlayState = state;
+  cardElements.forEach((elem) => {
+    elem.style.animationDirection = dir;
+    elem.style.animationPlayState = state;
+  });
 }
 function cardResetAnimation() {
-  cardElement.style.animation = "none";
-  cardElement.offsetHeight; // reflow
-  cardElement.style.animation = null;
-  cardCoverElement.style.animation = "none";
-  cardCoverElement.offsetHeight; // reflow
-  cardCoverElement.style.animation = null;
+  cardElements.forEach((elem) => {
+    elem.style.animation = "none";
+    elem.offsetHeight; // reflow
+    elem.style.animation = null;
+  });
 }

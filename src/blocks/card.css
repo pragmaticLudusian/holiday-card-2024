@@ -55,6 +55,18 @@
   }
 }
 
+@keyframes invisible {
+  0% {
+    visibility: visible;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
 .card {
   height: 80%;
   aspect-ratio: 9 / 16;
@@ -84,6 +96,7 @@
   height: 100%;
   box-sizing: border-box; /* would cause bottom offset issues otherwise; normally it's not inheritable */
   border: 5px solid red;
+  animation: invisible 1s linear 0s paused forwards;
 }
 
 .card__title {

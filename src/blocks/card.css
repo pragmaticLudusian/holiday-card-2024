@@ -97,13 +97,26 @@
   text-align: center;
   height: 100%;
   box-sizing: border-box; /* would cause bottom offset issues otherwise; normally it's not inheritable */
-  border: 5px solid red;
   animation: invisible 1s linear 0s paused forwards;
+}
+
+.card__cover_outer {
+  border: 5px solid red;
+}
+
+.card__cover_inner {
+  border: 5px solid green;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 94%;
+  margin: 5%;
 }
 
 .card__title {
   margin: 0;
-  font-size: 72px;
+  font-size: 0; /* dynamic */
   color: red;
   text-shadow: 2px 2px maroon;
   border-top: 4px solid blue;

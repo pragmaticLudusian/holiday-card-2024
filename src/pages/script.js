@@ -20,8 +20,11 @@ const pageElement = document.querySelector(".page");
 
 const cardElement = document.querySelector(".card");
 const cardFrontElement = cardElement.querySelector(".card__front");
-const cardCoverElement = cardElement.querySelector(".card__cover");
-const cardElements = [cardElement, cardFrontElement, cardCoverElement];
+const cardCoverElements = cardElement.querySelectorAll(".card__cover");
+const cardElements = [cardElement, cardFrontElement].concat(
+  Array.from(cardCoverElements)
+);
+console.log(cardElements);
 
 const cardTitleElement = cardElement.querySelector(".card__title");
 cardSizeRender();
@@ -42,7 +45,7 @@ function cardSizeRender() {
   );
   cardTitleElement.style.setProperty(
     "font-size",
-    `${(cardElement.clientWidth * 72) / (360 + 10)}px`
+    `${(cardElement.clientWidth * 84) / 360}px`
   );
 }
 

@@ -15,25 +15,29 @@ const songsArray = [
 
 const cssRoot = document.querySelector(":root");
 const cssRootStyle = getComputedStyle(cssRoot);
-cardHeightRender();
 
+const cardElement = document.querySelector(".card");
 const cardCoverElement = document.querySelector(".card__front");
+cardSizeRender();
+
 cardCoverElement.addEventListener("click", () => {
-  if (getComputedStyle(cardCoverElement)["animation-play-state"] === "paused") {
+  if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
     // prevent animation interruption
-    cardCoverElement.classList.contains("card__front_opened")
-      ? cardClose()
-      : cardOpen();
+    cardElement.classList.contains("card_opened") ? cardClose() : cardOpen();
   }
 });
 
-window.addEventListener("resize", cardHeightRender);
-function cardHeightRender() {
+window.addEventListener("resize", cardSizeRender);
+function cardSizeRender() {
   cssRoot.style.setProperty("--cardheight", `${window.innerHeight * 0.8}px`);
+  cssRoot.style.setProperty(
+    "--cardwidth",
+    `${cardElement.clientWidth * 0.59}px`
+  );
 }
 
 function cardOpen() {
-  cardCoverElement.classList.add("card__front_opened");
+  cardElement.classList.add("card_opened");
   const randomNum = Math.floor(Math.random() * 12);
   console.log(`https://youtu.be/${songsArray[randomNum]}`);
 
@@ -50,14 +54,19 @@ function cardClose() {
   setTimeout(() => {
     cardSetAnimation("paused", "reverse");
   }, 3000);
-  cardCoverElement.classList.remove("card__front_opened");
+  cardElement.classList.remove("card_opened");
 }
 
 function cardSetAnimation(state, dir = "normal") {
+  cardElement.style.animationDirection = dir;
+  cardElement.style.animationPlayState = state;
   cardCoverElement.style.animationDirection = dir;
   cardCoverElement.style.animationPlayState = state;
 }
 function cardResetAnimation() {
+  cardElement.style.animation = "none";
+  cardElement.offsetHeight; // reflow
+  cardElement.style.animation = null;
   cardCoverElement.style.animation = "none";
   cardCoverElement.offsetHeight; // reflow
   cardCoverElement.style.animation = null;

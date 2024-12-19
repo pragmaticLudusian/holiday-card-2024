@@ -1,5 +1,6 @@
 :root {
   --cardheight: 0;
+  --cardwidth: 0;
 }
 
 @keyframes open {
@@ -45,10 +46,20 @@
   }
 }
 
+@keyframes shift {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(var(--cardwidth));
+  }
+}
+
 .card {
   height: 80%;
   aspect-ratio: 9 / 16;
   position: relative;
+  animation: shift 3s linear 0s paused forwards;
 }
 
 .card__front {

@@ -45,7 +45,7 @@ function cardOpen() {
   cardSetAnimation("running");
   setTimeout(() => {
     cardSetAnimation("paused");
-  }, 3000);
+  }, 1000);
 }
 
 function cardClose() {
@@ -53,7 +53,7 @@ function cardClose() {
   cardSetAnimation("running", "reverse");
   setTimeout(() => {
     cardSetAnimation("paused", "reverse");
-  }, 3000);
+  }, 1000);
   cardElement.classList.remove("card_opened");
 }
 

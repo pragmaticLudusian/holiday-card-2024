@@ -161,7 +161,7 @@
 
 .color__violet {
   color: #a0f;
-  text-shadow: 0 0 4px slateblue;
+  text-shadow: 2px 2px slateblue;
 }
 
 .card__videoframe {
@@ -184,4 +184,8 @@
 .card__footer-text {
   margin: 0;
   text-align: center;
+}
+
+.card__countdown {
+  color: #a0f;
 }

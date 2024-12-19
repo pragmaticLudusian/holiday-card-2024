@@ -73,6 +73,8 @@
   position: relative;
   animation: shift 1s linear 0s paused forwards;
   box-sizing: border-box;
+  font-family: "Mountains of Christmas";
+  font-weight: bold;
 }
 
 .card__front {
@@ -102,6 +104,15 @@
 .card__title {
   margin: 0;
   font-size: 72px;
+  color: red;
+  text-shadow: 2px 2px maroon;
+  border-top: 4px solid deepskyblue;
+  border-bottom: 4px solid deepskyblue;
+}
+
+.coloralt {
+  color: green;
+  text-shadow: 2px 2px darkgreen;
 }
 
 .card__back {

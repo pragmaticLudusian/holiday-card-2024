@@ -25,18 +25,18 @@ const cardElements = [cardElement, cardFrontElement].concat(
   Array.from(cardCoverElements)
 );
 
-const cardTitleElement = cardElement.querySelector(".card__title");
-const cardHeaderElement = cardElement.querySelector(".card__header");
-const cardFooterElement = cardElement.querySelector(".card__footer");
-
-const videoElement = cardElement.querySelector(".card__video");
-
 cardFrontElement.addEventListener("click", () => {
   if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
     // prevent animation interruption
     cardElement.classList.contains("card_opened") ? cardClose() : cardOpen();
   }
 });
+
+const cardTitleElement = cardElement.querySelector(".card__title");
+const cardHeaderElement = cardElement.querySelector(".card__header");
+const cardFooterElement = cardElement.querySelector(".card__footer");
+
+const videoElement = cardElement.querySelector(".card__video");
 
 const countdownElement = cardElement.querySelector(".card__countdown");
 const countdownDate = new Date("Dec 25, 2024").getTime();
@@ -50,8 +50,45 @@ const timer = setInterval(() => {
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  countdownElement.textContent = `${days}d ${String(hours).padStart(
+    2,
+    "0"
+  )}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(
+    2,
+    "0"
+  )}s`;
 }, 1000);
+
+const snowflakes = [];
+for (let i = 0; i < 100; i++) {
+  const randomX1 = Math.random() * 100; // 0 ~ 100 vw
+  const randomX2 = randomX1 + Math.random() * 60 - 30; // offset -30 ~ +30 vw
+  const randomTime = Math.random() * 10000 + 5000; // 5 ~ 15 s
+  const randomDelay = Math.random() * 5000; // 0 ~ 5 s
+  const snowflakeClass = Math.random() < 0.5 ? "#snow-one" : "#snow-two";
+  // const randomHue = Math.random() * 360; // 0 ~ 359
+
+  snowflakes[i] = document
+    .querySelector(snowflakeClass)
+    .content.cloneNode(true)
+    .querySelector(".snow");
+
+  pageElement.appendChild(snowflakes[i]); // add to DOM, THEN animate
+  const anim = snowflakes[i].animate(
+    [
+      { left: `${randomX1}vw`, top: "0px" },
+      { left: `${randomX2}vw`, top: "100vh" },
+    ],
+    {
+      duration: randomTime,
+      iterations: Infinity,
+      delay: randomDelay,
+    }
+  );
+  console.log(anim);
+  console.log(document.getAnimations());
+  anim.commitStyles();
+}
 
 window.addEventListener("resize", cardSizeRender);
 function cardSizeRender() {
@@ -120,7 +157,7 @@ function backgroundFadeAnimation(animation) {
   let opacity = animation === "in" ? 0 : 1;
   const bgFadeAnimation = setInterval(() => {
     animation === "in" ? (opacity += 0.016) : (opacity -= 0.02);
-    pageElement.style.setProperty("--bgopacity", `${opacity}`);
+    pageElement.style.setProperty("--opacity", `${opacity}`);
     if (opacity > 1 || opacity < 0) {
       clearInterval(bgFadeAnimation);
     }

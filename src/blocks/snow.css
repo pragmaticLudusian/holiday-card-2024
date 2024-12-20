@@ -1,0 +1,16 @@
+.snow {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 15px;
+  height: 15px;
+  opacity: var(--opacity, 0);
+}
+
+.snow_type_one {
+  background: url(../images/snow1.gif) no-repeat center/100%;
+}
+
+.snow_type_two {
+  background: url(../images/snow2.gif) no-repeat center/100%;
+}

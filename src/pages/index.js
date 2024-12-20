@@ -1,45 +1,19 @@
-const songsArray = [
-  "uceNmJSyXGw",
-  "pW-RcN7mxZc",
-  "Y_GlTjwPjFA",
-  "88InoQyyP3w",
-  "MiH7NaaqtTs",
-  "e3KrI4lBeps",
-  "lGlhq-0uyfA",
-  "kJuWPRq-mwM",
-  "zd2i3UAXm44",
-  "jnxwkFMJjts",
-  "bUIkTPzkLHE",
-  "sRy0RJ96gxM",
-];
+import "./index.css";
+import {
+  songsArray,
+  cssRoot,
+  pageElement,
+  cardElement,
+  cardFrontElement,
+  cardCoverElements,
+  cardElements,
+  cardContentElement,
+  cardHintElement,
+  videoElement,
+  countdownElement,
+  countdownDate,
+} from "../utils/constants.js";
 
-const cssRoot = document.querySelector(":root");
-const cssRootStyle = getComputedStyle(cssRoot);
-
-const pageElement = document.querySelector(".page");
-
-const cardElement = document.querySelector(".card");
-const cardFrontElement = cardElement.querySelector(".card__front");
-const cardCoverElements = cardElement.querySelectorAll(".card__cover");
-const cardElements = [cardElement, cardFrontElement].concat(
-  Array.from(cardCoverElements)
-);
-
-cardFrontElement.addEventListener("click", () => {
-  if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
-    // prevent animation interruption
-    cardElement.classList.contains("card_opened") ? cardClose() : cardOpen();
-  }
-});
-
-const cardTitleElement = cardElement.querySelector(".card__title");
-const cardContentElement = cardElement.querySelector(".card__content");
-const cardHintElement = cardElement.querySelector(".card__hint");
-
-const videoElement = cardElement.querySelector(".card__video");
-
-const countdownElement = cardElement.querySelector(".card__countdown");
-const countdownDate = new Date("Dec 25, 2024").getTime();
 const timer = setInterval(() => {
   const now = new Date().getTime();
   const distance = countdownDate - now;
@@ -59,6 +33,13 @@ const timer = setInterval(() => {
   )}s`;
 }, 1000);
 
+cardFrontElement.addEventListener("click", () => {
+  if (getComputedStyle(cardElement)["animation-play-state"] === "paused") {
+    // prevent animation interruption
+    cardElement.classList.contains("card_opened") ? cardClose() : cardOpen();
+  }
+});
+
 const snowflakes = [];
 for (let i = 0; i < 100; i++) {
   const randomX1 = Math.random() * 100; // 0 ~ 100 vw
@@ -74,7 +55,7 @@ for (let i = 0; i < 100; i++) {
     .querySelector(".snow");
 
   pageElement.appendChild(snowflakes[i]); // add to DOM, THEN animate
-  const anim = snowflakes[i].animate(
+  snowflakes[i].animate(
     [
       { left: `${randomX1}vw`, top: "-15px" },
       { left: `${randomX2}vw`, top: "100vh" },
@@ -85,7 +66,6 @@ for (let i = 0; i < 100; i++) {
       delay: randomDelay,
     }
   );
-  anim.commitStyles();
 }
 
 window.addEventListener("resize", cardSizeRender);

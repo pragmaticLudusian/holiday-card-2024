@@ -92,22 +92,25 @@ for (let i = 0; i < 100; i++) {
 window.addEventListener("resize", cardSizeRender);
 function cardSizeRender() {
   cssRoot.style.setProperty("--cardheight", `${window.innerHeight * 0.8}px`);
-  cssRoot.style.setProperty(
-    "--cardwidth",
-    `${cardElement.clientWidth * 0.27}px`
-  );
+
+  const offset = window.innerWidth < 900 ? 0 : cardElement.clientWidth * 0.27; // act like a media query
+  cssRoot.style.setProperty("--cardwidth", `${offset}px`);
+
   cardTitleElement.style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 84) / 360}px`
   );
+
   cardHeaderElement.style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 36) / 360}px`
   );
+
   cardFooterElement.style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 36) / 360}px`
   );
+
   cardHintElement.style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 9) / 360}px`

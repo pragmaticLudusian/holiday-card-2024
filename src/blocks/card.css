@@ -89,8 +89,10 @@
 }
 
 .card__cover {
+  font-size: 0; /* dynamic */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   height: 100%;
@@ -98,11 +100,11 @@
 }
 
 .card__cover_outer {
-  border: 5px solid red;
+  border: 5px solid #f00;
 }
 
 .card__cover_inner {
-  border: 5px solid green;
+  border: 5px solid #080;
   position: absolute;
   top: 0;
   left: 0;
@@ -113,21 +115,31 @@
 
 .card__title {
   margin: 0;
-  font-size: 0; /* dynamic */
-  border-top: 4px solid blue;
-  border-bottom: 4px solid blue;
-  color: red;
-  text-shadow: 2px 2px maroon;
+  border-top: 4px solid #00f;
+  border-bottom: 4px solid #00f;
+  color: #080;
+  text-shadow: 2px 2px #060;
+  transition: color ease 0.4s, text-shadow ease 0.4s;
+  z-index: 1;
+}
+
+.card__title:hover {
+  color: silver;
+  text-shadow: 2px 2px grey;
 }
 
 .color__red-shadow {
-  color: red;
-  text-shadow: 2px 2px maroon;
+  color: #f00;
+  text-shadow: 2px 2px #800;
 }
 
 .color__green-shadow {
-  color: green;
-  text-shadow: 2px 2px darkgreen;
+  color: #080;
+  text-shadow: 2px 2px #060;
+}
+
+.card__emojis {
+  margin: 0;
 }
 
 .card__back {
@@ -140,6 +152,7 @@
 }
 
 .card__content {
+  font-size: 0; /* dynamic */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -192,10 +205,10 @@
 }
 
 .card__hint {
+  font-size: 0; /* dynamic */
   margin: 0;
   position: absolute;
   bottom: 0;
   right: 3%;
-  font-size: 0; /* dynamic */
   color: brown;
 }

@@ -33,8 +33,7 @@ cardFrontElement.addEventListener("click", () => {
 });
 
 const cardTitleElement = cardElement.querySelector(".card__title");
-const cardHeaderElement = cardElement.querySelector(".card__header");
-const cardFooterElement = cardElement.querySelector(".card__footer");
+const cardContentElement = cardElement.querySelector(".card__content");
 const cardHintElement = cardElement.querySelector(".card__hint");
 
 const videoElement = cardElement.querySelector(".card__video");
@@ -96,17 +95,12 @@ function cardSizeRender() {
   const offset = window.innerWidth < 900 ? 0 : cardElement.clientWidth * 0.27; // act like a media query
   cssRoot.style.setProperty("--cardwidth", `${offset}px`);
 
-  cardTitleElement.style.setProperty(
+  cardCoverElements[0].style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 84) / 360}px`
   );
 
-  cardHeaderElement.style.setProperty(
-    "font-size",
-    `${(cardElement.clientWidth * 36) / 360}px`
-  );
-
-  cardFooterElement.style.setProperty(
+  cardContentElement.style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 36) / 360}px`
   );

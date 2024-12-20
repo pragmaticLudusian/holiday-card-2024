@@ -35,6 +35,7 @@ cardFrontElement.addEventListener("click", () => {
 const cardTitleElement = cardElement.querySelector(".card__title");
 const cardHeaderElement = cardElement.querySelector(".card__header");
 const cardFooterElement = cardElement.querySelector(".card__footer");
+const cardHintElement = cardElement.querySelector(".card__hint");
 
 const videoElement = cardElement.querySelector(".card__video");
 
@@ -108,6 +109,10 @@ function cardSizeRender() {
   cardFooterElement.style.setProperty(
     "font-size",
     `${(cardElement.clientWidth * 36) / 360}px`
+  );
+  cardHintElement.style.setProperty(
+    "font-size",
+    `${(cardElement.clientWidth * 9) / 360}px`
   );
 }
 cardSizeRender();

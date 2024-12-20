@@ -189,3 +189,12 @@
 .card__countdown {
   color: #a0f;
 }
+
+.card__hint {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  right: 3%;
+  font-size: 0; /* dynamic */
+  color: brown;
+}

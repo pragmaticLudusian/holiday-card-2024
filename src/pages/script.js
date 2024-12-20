@@ -77,7 +77,7 @@ for (let i = 0; i < 100; i++) {
   pageElement.appendChild(snowflakes[i]); // add to DOM, THEN animate
   const anim = snowflakes[i].animate(
     [
-      { left: `${randomX1}vw`, top: "0px" },
+      { left: `${randomX1}vw`, top: "-15px" },
       { left: `${randomX2}vw`, top: "100vh" },
     ],
     {
@@ -86,8 +86,6 @@ for (let i = 0; i < 100; i++) {
       delay: randomDelay,
     }
   );
-  console.log(anim);
-  console.log(document.getAnimations());
   anim.commitStyles();
 }
 
@@ -119,10 +117,10 @@ cardSizeRender();
 
 function cardOpen() {
   cardElement.classList.add("card_opened");
-  const randomNum = Math.floor(Math.random() * 12);
+  const randomSong = Math.floor(Math.random() * 12);
   videoElement.setAttribute(
     "src",
-    `https://youtube.com/embed/${songsArray[randomNum]}`
+    `https://youtube.com/embed/${songsArray[randomSong]}`
   );
   backgroundFadeAnimation("in");
   cardResetAnimation();

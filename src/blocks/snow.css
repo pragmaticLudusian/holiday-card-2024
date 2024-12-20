@@ -1,7 +1,5 @@
 .snow {
   position: absolute;
-  top: 0px;
-  left: 0px;
   width: 15px;
   height: 15px;
   opacity: var(--opacity, 0);
